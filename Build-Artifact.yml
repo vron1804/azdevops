@@ -15,7 +15,7 @@ stages:
   - job: Build_Job
     steps:
     - bash: echo this is first build job
-    - bash: $(System.DefaultWorkingDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
     - bash: ls -R $(Build.ArtifactStagingDirectory)
     - task: CopyFiles@2
       inputs:
