@@ -8,6 +8,7 @@ steps:
 - script: echo k8s azure terraform !
   displayName: 'Run a one-line script'
 - task: DownloadSecureFile@1
+  name: publickey
   inputs:
     secureFile: 'id_rsa.pub'
     retryCount: '5'
