@@ -5,7 +5,7 @@ resources:
 - repo: self
 
 variables:
-  tag:  26  #'$(Build.BuildId)'
+  tag:  '$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -16,15 +16,14 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-
-    # - task: Docker@2
-    #   displayName: Build an image
-    #   inputs:
-    #     containerRegistry: 'docker_registry'
-    #     repository: 'vron1804/currency-exchange-devops'
-    #     command: 'build'
-    #     Dockerfile: '**/Dockerfile'
-    #     tags: '$(tag)'
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        containerRegistry: 'docker_registry'
+        repository: 'vron1804/currency-exchange-devops'
+        command: 'build'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
